@@ -8,11 +8,11 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
 module.exports = {
     entry: "./src/main.ts",
+    devtool: 'inline-source-map',
     output: {
         path: path.resolve( __dirname, 'dist' ),
         filename: 'main.js',
     },
-    watch: true,
     mode: 'development',
     module: {
         rules: [
@@ -26,6 +26,9 @@ module.exports = {
                 use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ],
             },
         ]
+    },
+    devServer: {
+        contentBase: './dist',
     },
     resolve: {
         extensions: [ '.js', '.ts' ],
